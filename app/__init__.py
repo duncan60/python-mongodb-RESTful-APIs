@@ -6,7 +6,6 @@ from flask.ext.pymongo import PyMongo
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://127.0.0.1:12345/bookList'
 
-
 api = restful.Api(app)
 mongo = PyMongo(app)
 
@@ -17,8 +16,8 @@ resource_fields = {
 }
 
 class Index(restful.Resource):
-	def get(self):
-		return {'msg': 'hello world!'}
+    def get(self):
+        return {'msg': 'hello Index!'}
 
 api.add_resource(Index, '/')
 

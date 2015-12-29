@@ -1,4 +1,4 @@
-from flask import Flask, abort
+from flask import abort
 from flask.ext.restful import Resource, reqparse, marshal_with
 from app import app, api, mongo, resource_fields
 
@@ -13,6 +13,6 @@ class BookList(Resource):
         parser.add_argument('price', type = str, required = True, help = 'No task price provided')
         args = parser.parse_args()
         mongo.db.bookList.insert(args)
-        return {'msg': 'create book ok'}, 201
+        return {'msg': 'create book ok'}, 200
 
 api.add_resource(BookList, '/books', endpoint = 'books')
