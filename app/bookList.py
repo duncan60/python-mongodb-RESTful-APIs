@@ -13,7 +13,6 @@ class BookList(Resource):
         parser.add_argument('price', type = str, required = True, help = 'No task price provided')
         args = parser.parse_args()
         mongo.db.bookList.insert(args)
-        #jo = json.loads(args['title'], args['price'])
-        return {'msg': 'ok'}, 201
+        return {'msg': 'create book ok'}, 201
 
 api.add_resource(BookList, '/books', endpoint = 'books')
