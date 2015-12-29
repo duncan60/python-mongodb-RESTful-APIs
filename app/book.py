@@ -13,6 +13,14 @@ class Book(Resource):
         return {'msg': 'delete'}
 
     def put(self, book_id):
-        return {'msg': 'put'}
+        parser = reqparse.RequestParser()
+        parser.add_argument('price', type = str)
+        parser.add_argument('title', type = str)
+        args = {}
+        for k, v in parser.parse_args().iteritems():
+            if v != None:
+                args[k] = v
+        mongo.db.bookList.find_one_and_update({'_id': book_id}, {'$set': args})
+        return {'msg': 'update successed'}
 
 api.add_resource(Book, '/book/<ObjectId:book_id>', endpoint = 'book')
