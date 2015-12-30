@@ -25,7 +25,6 @@ class Books(Resource):
 
         args['date_updated'] = datetime.utcnow()
         mongo.db.bookList.insert(args)
-
         return {'msg': 'create book ok'}, 200
 
 api.add_resource(Books, '/books', endpoint = 'books')
