@@ -24,8 +24,10 @@ api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
 
 resource_fields = {
-    '_id'  : fields.String,
+    '_id': fields.String,
     'title': fields.String,
+    'date_created': fields.DateTime(dt_format='iso8601'),
+    'date_updated': fields.DateTime(dt_format='iso8601'),
     'price': fields.Float
 }
 
