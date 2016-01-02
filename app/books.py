@@ -3,7 +3,7 @@ from app import app, api, mongo, resource_fields
 from datetime import datetime
 
 class Books(Resource):
-    @marshal_with(resource_fields, envelope='bool_list')
+    @marshal_with(resource_fields, envelope='book_list')
     def get(self):
         return [x for x in mongo.db.bookList.find()]
 
