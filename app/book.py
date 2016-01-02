@@ -11,6 +11,7 @@ class Book(Resource):
         return book, 200
 
     def delete(self, book_id):
+        mongo.db.bookList.find_one_or_404({"_id": book_id})
         mongo.db.bookList.delete_one({'_id': book_id})
         return {'msg': 'delete success'}, 200
 
