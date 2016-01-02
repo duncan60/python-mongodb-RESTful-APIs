@@ -13,6 +13,7 @@ mongodb db format and use db
 ```
 use bookList
 insert data format: {
+  _id:ObjectId(),
   title: '',
   price: '',
   date_updated:'',
