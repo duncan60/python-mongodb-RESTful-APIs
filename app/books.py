@@ -23,7 +23,7 @@ class Books(Resource):
                     v = float(v)
             args[k] = v
 
-        args['date_updated'] = datetime.utcnow()
+        args['date_created'] = datetime.utcnow()
         mongo.db.bookList.insert(args)
         return {'msg': 'create book ok'}, 200
 

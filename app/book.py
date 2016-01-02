@@ -24,7 +24,7 @@ class Book(Resource):
             if v != None:
                 args[k] = v
 
-        args['date_created'] = datetime.utcnow()
+        args['date_updated'] = datetime.utcnow()
         mongo.db.bookList.find_one_and_update({'_id': book_id}, {'$set': args})
         return {'msg': 'update success'}, 200
 
