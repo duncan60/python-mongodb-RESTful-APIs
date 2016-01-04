@@ -11,14 +11,14 @@ $ pip install -r requirements.txt
 ```
 mongodb db format and use db
 ```
-use bookList
-insert data format: {
-  _id:ObjectId(),
-  title: '',
-  price: '',
-  date_updated:'',
-  date_created:''
-}
+$ use bookList
+#insert data format: {
+#  _id:ObjectId(),
+#  title: '',
+#  price: '',
+#  date_updated:'',
+#  date_created:''
+#}
 ```
 ## Start to development server
 ```
