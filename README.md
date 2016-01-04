@@ -31,9 +31,17 @@ $ . env/bin/activate
 
 ```
 # get /books
+
 # post /books 
+# params: {"title":" ", "price": " "}
+
 # get /book/<ObjectId:book_id>
+
 # put /book/<ObjectId:book_id>
+# params: {"title":" ", "price": " "}
+
 # delete /book/<ObjectId:book_id>
+
 # get /search
+  params: {"title": " "}
 ```
