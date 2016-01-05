@@ -30,6 +30,10 @@ $ . env/bin/activate
 ## RESTful-APIs
 
 ```
+# start mongodb
+$ cd your mondodb path
+$ mongof -f conf/mongod.conf
+
 # get /books
 
 # post /books 
