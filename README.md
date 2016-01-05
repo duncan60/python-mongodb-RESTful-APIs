@@ -1,18 +1,19 @@
 # python-mongodb-RESTful-APIs
-practice RESTful APIs to python and mongodb 
+practice RESTful APIs to python and mongodb
 
 
-## Setup
+## Installation
+After cloning, create a virtual environment and install the requirements. For Linux and Mac users:
+
 ```
-$ pip install virtualenv
 $ virtualenv env
 $ . env/bin/activate
-$ pip install -r requirements.txt  
+(venv) $ pip install -r requirements.txt
 ```
 mongodb db format and use db
 ```
 $ use bookList
-# start mongodb and connections 
+# start mongodb and connections
 # insert data format: {
 #   _id:ObjectId(),
 #   title: '',
@@ -21,9 +22,10 @@ $ use bookList
 #   date_created:''
 # }
 ```
-## Start to development server
+## Start to development and running server
 ```
 $ . env/bin/activate
+(venv) $ python run.py
 # open this url in your browser or postman
 # http://127.0.0.1:5000/
 ```
