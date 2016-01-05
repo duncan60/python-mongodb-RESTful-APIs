@@ -12,7 +12,8 @@ $ pip install -r requirements.txt
 mongodb db format and use db
 ```
 $ use bookList
-#insert data format: {
+# start mongodb and connections 
+# insert data format: {
 #  _id:ObjectId(),
 #  title: '',
 #  price: '',
