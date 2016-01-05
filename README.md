@@ -14,12 +14,12 @@ mongodb db format and use db
 $ use bookList
 # start mongodb and connections 
 # insert data format: {
-#  _id:ObjectId(),
-#  title: '',
-#  price: '',
-#  date_updated:'',
-#  date_created:''
-#}
+#   _id:ObjectId(),
+#   title: '',
+#   price: '',
+#   date_updated:'',
+#   date_created:''
+# }
 ```
 ## Start to development server
 ```
