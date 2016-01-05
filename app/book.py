@@ -27,6 +27,6 @@ class Book(Resource):
 
         args['date_updated'] = datetime.utcnow()
         mongo.db.bookList.find_one_and_update({'_id': book_id}, {'$set': args})
-        return {'msg': 'update success'}, 200
+        return {'msg': 'update success'}, 201
 
 api.add_resource(Book, '/book/<ObjectId:book_id>', endpoint = 'book')
