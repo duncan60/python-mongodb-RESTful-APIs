@@ -53,7 +53,6 @@ $ mongof -f conf/mongod.conf
 # params: {"title": " "}
 
 # get /user
-# params: {"name":" ", "password": " "}
 
 # post /user
 # params: {"name":" ", "password": " "}
