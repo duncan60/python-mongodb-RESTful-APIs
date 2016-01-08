@@ -1,10 +1,14 @@
 from flask import abort
 from flask.ext.restful import Resource, reqparse, marshal_with
-from app import app, api, mongo, resource_fields
+from app import app, api, mongo, user_resource_fields
 from bson.objectid import ObjectId
 from datetime import datetime
 
-class User(Resource):
+class Users(Resource):
+    @marshal_with(user_resource_fields, envelope='user_list')
+    def get(self):
+        return [x for x in mongo.db.user.find()]
+
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('name', type = str, required = True, help = 'No task name provided')
@@ -17,11 +21,12 @@ class User(Resource):
         find_user = [x for x in mongo.db.user.find({'name': args['name']})]
 
         if len(find_user) == 0:
-        	mongo.db.user.insert(args)
-        	msg = 'add new user success'
+            args['date_created'] = datetime.utcnow()
+            mongo.db.user.insert(args)
+            msg = 'add new user success'
         else:
-        	msg = 'user alerady has, add failure'
+            msg = 'user alerady has, add failure'
 
         return {'msg': msg}, 201
 
-api.add_resource(User, '/user', endpoint = 'user')
+api.add_resource(Users, '/users', endpoint = 'users')

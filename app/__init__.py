@@ -35,12 +35,22 @@ DEFAULT_REPRESENTATIONS = {'application/json': output_json}
 api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
 
-resource_fields = {
+book_resource_fields = {
     '_id': fields.String,
     'title': fields.String,
+    'price': fields.Float,
     'date_created': fields.DateTime(dt_format='iso8601'),
-    'date_updated': fields.DateTime(dt_format='iso8601'),
-    'price': fields.Float
+    'date_updated': fields.DateTime(dt_format='iso8601')
+
+}
+
+user_resource_fields = {
+    '_id': fields.String,
+    'name': fields.String,
+    'password': fields.String,
+    'date_created': fields.DateTime(dt_format='iso8601'),
+    'date_updated': fields.DateTime(dt_format='iso8601')
+
 }
 
 class Index(restful.Resource):
@@ -49,4 +59,4 @@ class Index(restful.Resource):
 
 api.add_resource(Index, '/')
 
-from app import books, book, search, user
+from app import books, book, search, users

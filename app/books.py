@@ -1,9 +1,9 @@
 from flask.ext.restful import Resource, reqparse, marshal_with, abort
-from app import app, api, mongo, resource_fields
+from app import app, api, mongo, book_resource_fields
 from datetime import datetime
 
 class Books(Resource):
-    @marshal_with(resource_fields, envelope='book_list')
+    @marshal_with(book_resource_fields, envelope='book_list')
     def get(self):
         return [x for x in mongo.db.bookList.find()]
 

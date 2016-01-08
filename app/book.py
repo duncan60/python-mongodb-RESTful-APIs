@@ -1,11 +1,11 @@
 from flask import abort
 from flask.ext.restful import Resource, reqparse, marshal_with
-from app import app, api, mongo, resource_fields
+from app import app, api, mongo, book_resource_fields
 from bson.objectid import ObjectId
 from datetime import datetime
 
 class Book(Resource):
-    @marshal_with(resource_fields, envelope='book')
+    @marshal_with(book_resource_fields, envelope='book')
     def get(self, book_id):
         book = mongo.db.bookList.find_one_or_404({'_id': book_id})
         return book, 200
