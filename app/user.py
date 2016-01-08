@@ -14,6 +14,14 @@ class User(Resource):
         if not args['name'] or not args['password']:
             abort(400)
 
-        return {'msg': 'new user success'}
+        find_user = [x for x in mongo.db.user.find({'name': args['name']})]
+
+        if len(find_user) == 0:
+        	mongo.db.user.insert(args)
+        	msg = 'add new user success'
+        else:
+        	msg = 'user alerady has, add failure'
+
+        return {'msg': msg}, 201
 
 api.add_resource(User, '/user', endpoint = 'user')

@@ -39,7 +39,7 @@ $ mongof -f conf/mongod.conf
 
 # get /books
 
-# post /books 
+# post /books
 # params: {"title":" ", "price": " "}
 
 # get /book/<ObjectId:book_id>
@@ -51,4 +51,7 @@ $ mongof -f conf/mongod.conf
 
 # get /search
 # params: {"title": " "}
+
+# post /user
+# params: {"name":" ", "password": " "}
 ```
