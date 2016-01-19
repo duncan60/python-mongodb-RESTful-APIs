@@ -59,4 +59,4 @@ class Index(restful.Resource):
 
 api.add_resource(Index, '/')
 
-from app import books, book, search, users
+from app import books, book, search, users, login
