@@ -35,7 +35,7 @@ $ . env/bin/activate
 ```
 # start mongodb
 $ cd your mondodb path
-$ mongof -f conf/mongod.conf
+$ mongod -f conf/mongod.conf
 
 # get /books
 
