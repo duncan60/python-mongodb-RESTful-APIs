@@ -52,8 +52,8 @@ $ mongod -f conf/mongod.conf
 # get /search
 # params: {"title": " "}
 
-# get /user
+# get /users
 
-# post /user
+# post /users
 # params: {"name":" ", "password": " "}
 ```
