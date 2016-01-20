@@ -11,6 +11,7 @@ class Search(Resource):
         parser.add_argument('title', type = str)
         args = parser.parse_args()
         books = mongo.db.bookList.find({'title': Regex(args.title)})
+
         return [x for x in books]
 
 api.add_resource(Search, '/search' , endpoint = 'search')

@@ -2,14 +2,15 @@ from flask import Flask
 from flask.ext import restful
 from flask.ext.restful import fields
 from flask.ext.pymongo import PyMongo
+from flask.ext.login import LoginManager
 from flask import make_response
 from bson.json_util import dumps
 
 app = Flask(__name__)
+app.secret_key = 'secret_key'
 #MONGO_URL = 'mongodb://127.0.0.1:12345/bookList'
 #MONGO_USERNAME= 'test_user'
 #MONGO_PASSWORD = '1234'
-
 MONGO_HOST = 'mongodb://127.0.0.1'
 MONGO_PORT = '12345'
 MONGO_DBNAME = 'bookList'
@@ -17,10 +18,12 @@ MONGO_DBNAME = 'bookList'
 #app.config['MONGO_URI'] = MONGO_URL
 #app.config['MONGO_USERNAME'] = MONGO_USERNAME
 #app.config['MONGO_PASSWORD'] = MONGO_PASSWORD
-
 app.config['MONGO_HOST'] = MONGO_HOST
 app.config['MONGO_PORT'] = MONGO_PORT
 app.config['MONGO_DBNAME'] = MONGO_DBNAME
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 mongo = PyMongo(app)
 

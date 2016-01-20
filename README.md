@@ -12,12 +12,20 @@ $ . env/bin/activate
 ```
 mongodb db format and use db
 ```
-$ use bookList
 # start mongodb and connections
+$ use bookList
 # insert data format: {
 #   _id:ObjectId(),
 #   title: '',
 #   price: '',
+#   date_updated:'',
+#   date_created:''
+# }
+$ use user
+# insert data format: {
+#   _id:ObjectId(),
+#   name: '',
+#   password: '',
 #   date_updated:'',
 #   date_created:''
 # }
@@ -56,4 +64,7 @@ $ mongod -f conf/mongod.conf
 
 # post /users
 # params: {"name":" ", "password": " "}
+
+# get /login
+# params: {"name": " ", "password": " "}
 ```
