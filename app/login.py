@@ -9,9 +9,14 @@ class User(UserMixin):
     pass
 
 @login_manager.user_loader
-def user_loader(name):
+def user_loader(id):
     user = User()
+    user.id = id
     return user
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return {'msg': 'you need login required'}
 
 class Login(Resource):
     def get(self):
@@ -26,12 +31,12 @@ class Login(Resource):
         find_user = [x for x in mongo.db.user.find({'name': args['name'], 'password': args['password']})]
 
         if len(find_user) == 0:
-            msg = 'none use'
+            msg = 'none user, login failure'
         else:
-            msg = 'has use'
+            msg = 'login success'
             user = User()
             user.id = find_user[0]['_id']
-            login_user(user)
+            login_user(user, remember=True)
 
         return {'msg': msg}, 201
 
