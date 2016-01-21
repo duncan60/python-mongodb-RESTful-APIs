@@ -1,14 +1,17 @@
 from flask import abort
 from flask.ext.restful import Resource, reqparse, marshal_with
+from flask.ext.login import login_required
 from app import app, api, mongo, user_resource_fields
 from bson.objectid import ObjectId
 from datetime import datetime
 
 class Users(Resource):
     @marshal_with(user_resource_fields, envelope='user_list')
+    @login_required
     def get(self):
         return [x for x in mongo.db.user.find()]
 
+    @login_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('name', type = str, required = True, help = 'No task name provided')

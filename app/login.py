@@ -23,14 +23,14 @@ class Login(Resource):
         if not args['name'] or not args['password']:
             abort(400)
 
-        find_user = [x for x in mongo.db.user.find({'name': args['name'], 'password': args['password']}, {'_id':0, 'date_created': 0})]
+        find_user = [x for x in mongo.db.user.find({'name': args['name'], 'password': args['password']})]
 
         if len(find_user) == 0:
             msg = 'none use'
         else:
             msg = 'has use'
             user = User()
-            user.id = args['name']
+            user.id = find_user[0]['_id']
             login_user(user)
 
         return {'msg': msg}, 201

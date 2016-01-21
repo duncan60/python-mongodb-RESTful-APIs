@@ -67,4 +67,6 @@ $ mongod -f conf/mongod.conf
 
 # get /login
 # params: {"name": " ", "password": " "}
+
+# get /logout
 ```
