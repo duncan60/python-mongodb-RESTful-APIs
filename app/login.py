@@ -43,7 +43,10 @@ class Login(Resource):
             user = User()
             user.id = find_user[0]['_id']
             login_user(user, remember=True)
-            mongo.db.user.find_one_and_update({'_id': find_user[0]['_id']}, {'$set': {'date_latest_login':datetime.utcnow()}})
+            mongo.db.user.find_one_and_update(
+                {'_id': user.id},
+                {'$set': {'date_latest_login':datetime.utcnow()}}
+            )
 
         return {'msg': msg}, 201
 
