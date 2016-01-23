@@ -6,12 +6,11 @@ from bson.objectid import ObjectId
 from datetime import datetime
 
 class Users(Resource):
-    @marshal_with(user_resource_fields, envelope='user_list')
     @login_required
+    @marshal_with(user_resource_fields, envelope='user_list')
     def get(self):
         return [x for x in mongo.db.user.find()]
 
-    @login_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('name', type = str, required = True, help = 'No task name provided')

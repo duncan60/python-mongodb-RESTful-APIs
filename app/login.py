@@ -12,31 +12,38 @@ class User(UserMixin):
 def user_loader(id):
     user = User()
     user.id = id
+    print 'user_loader'
     return user
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return {'msg': 'you need login required'}
+    return {'msg': 'you need login required'}, 401
 
 class Login(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('name', type = str, help = u'No task name provided')
+        self.reqparse.add_argument('password', type = str, help = u'No password price provided')
+
     def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('name', type = str, required = True, help = 'No task name provided')
-        parser.add_argument('password', type = str, required = True, help = 'No password price provided')
-        args = parser.parse_args()
+        args = self.reqparse.parse_args()
 
         if not args['name'] or not args['password']:
             abort(400)
 
-        find_user = [x for x in mongo.db.user.find({'name': args['name'], 'password': args['password']})]
+        try:
+            find_user = [x for x in mongo.db.user.find({'name': args['name'], 'password': args['password']})]
+        except:
+            return {'msg': 'DB Error'}, 500
 
         if len(find_user) == 0:
-            msg = 'none user, login failure'
+            msg = 'name or passowrd error'
         else:
             msg = 'login success'
             user = User()
             user.id = find_user[0]['_id']
             login_user(user, remember=True)
+            mongo.db.user.find_one_and_update({'_id': find_user[0]['_id']}, {'$set': {'date_latest_login':datetime.utcnow()}})
 
         return {'msg': msg}, 201
 

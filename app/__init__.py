@@ -39,27 +39,22 @@ api = restful.Api(app)
 api.representations = DEFAULT_REPRESENTATIONS
 
 book_resource_fields = {
-    '_id': fields.String,
-    'title': fields.String,
-    'price': fields.Float,
+    '_id'         : fields.String,
+    'title'       : fields.String,
+    'price'       : fields.Float,
     'date_created': fields.DateTime(dt_format='iso8601'),
     'date_updated': fields.DateTime(dt_format='iso8601')
 
 }
 
 user_resource_fields = {
-    '_id': fields.String,
-    'name': fields.String,
-    'password': fields.String,
-    'date_created': fields.DateTime(dt_format='iso8601'),
-    'date_updated': fields.DateTime(dt_format='iso8601')
+    '_id'              : fields.String,
+    'name'             : fields.String,
+    'password'         : fields.String,
+    'date_created'     : fields.DateTime(dt_format='iso8601'),
+    'date_updated'     : fields.DateTime(dt_format='iso8601'),
+    'date_latest_login': fields.DateTime(dt_format='iso8601')
 
 }
-
-class Index(restful.Resource):
-    def get(self):
-        return {'msg': 'hello Index!'}
-
-api.add_resource(Index, '/')
 
 from app import books, book, search, users, login, logout

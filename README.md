@@ -16,18 +16,19 @@ mongodb db format and use db
 $ use bookList
 # insert data format: {
 #   _id:ObjectId(),
-#   title: '',
-#   price: '',
-#   date_updated:'',
-#   date_created:''
+#   title       : '',
+#   price       : '',
+#   date_updated: '',
+#   date_created: ''
 # }
 $ use user
 # insert data format: {
 #   _id:ObjectId(),
-#   name: '',
-#   password: '',
-#   date_updated:'',
-#   date_created:''
+#   name             : '',
+#   password         : '',
+#   date_updated     : '',
+#   date_created     : '',
+#   date_latest_login: ''
 # }
 ```
 ## Start to development and running server
