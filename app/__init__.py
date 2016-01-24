@@ -22,6 +22,8 @@ app.config['MONGO_HOST'] = MONGO_HOST
 app.config['MONGO_PORT'] = MONGO_PORT
 app.config['MONGO_DBNAME'] = MONGO_DBNAME
 
+app.config['REMEMBER_COOKIE_NAME'] = 'token'
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 

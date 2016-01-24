@@ -12,7 +12,6 @@ class User(UserMixin):
 def user_loader(id):
     user = User()
     user.id = id
-    print 'user_loader'
     return user
 
 @login_manager.unauthorized_handler
