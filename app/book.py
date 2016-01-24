@@ -5,6 +5,11 @@ from bson.objectid import ObjectId
 from datetime import datetime
 
 class Book(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('price', type = str)
+        self.reqparse.add_argument('title', type = str)
+
     @marshal_with(book_resource_fields, envelope='book')
     def get(self, book_id):
         book = mongo.db.bookList.find_one_or_404({'_id': book_id})
@@ -16,12 +21,8 @@ class Book(Resource):
         return {'msg': 'delete success'}, 200
 
     def put(self, book_id):
-        parser = reqparse.RequestParser()
-        parser.add_argument('price', type = str)
-        parser.add_argument('title', type = str)
         args = {}
-
-        for k, v in parser.parse_args().iteritems():
+        for k, v in self.reqparse.parse_args().iteritems():
             if v != None:
                 args[k] = v
 
