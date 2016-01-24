@@ -7,7 +7,7 @@ from flask import make_response
 from bson.json_util import dumps
 
 app = Flask(__name__)
-app.secret_key = 'secret_key'
+app.secret_key = '123123123'
 #MONGO_URL = 'mongodb://127.0.0.1:12345/bookList'
 #MONGO_USERNAME= 'test_user'
 #MONGO_PASSWORD = '1234'
@@ -53,6 +53,7 @@ user_resource_fields = {
     '_id'              : fields.String,
     'name'             : fields.String,
     'password'         : fields.String,
+    'token'            : fields.String,
     'date_created'     : fields.DateTime(dt_format='iso8601'),
     'date_updated'     : fields.DateTime(dt_format='iso8601'),
     'date_latest_login': fields.DateTime(dt_format='iso8601')
