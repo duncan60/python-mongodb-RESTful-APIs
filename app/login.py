@@ -41,7 +41,12 @@ class Login(Resource):
             }, 201
 
         try:
-            find_user = mongo.db.user.find_one({'name': args['name'], 'password': args['password']})
+            find_user = mongo.db.user.find_one(
+                {
+                    'name'    : args['name'],
+                    'password': args['password']
+                }
+            )
         except:
             return {'msg': 'DB Error'}, 500
 
